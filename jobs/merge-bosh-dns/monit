@@ -1,0 +1,5 @@
+check process merge-bosh-dns
+  with pidfile /var/vcap/sys/run/merge-bosh-dns/merge-bosh-dns.pid
+  start program "/var/vcap/jobs/merge-bosh-dns/ctl start"
+  stop  program "/var/vcap/jobs/merge-bosh-dns/ctl stop"
+  group vcap

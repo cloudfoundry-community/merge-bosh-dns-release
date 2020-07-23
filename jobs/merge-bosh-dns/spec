@@ -1,0 +1,63 @@
+---
+name: merge-bosh-dns
+
+description: |
+  merge-bosh-dns can read a remotely served records.json file and a local fs
+  records.json file and merge them together into a new file.
+
+#TODO: templates
+
+#TODO: packages
+
+properties:
+  local_source.file:
+    description: The location of the local FS file to pull in as a merge source.
+    default: /var/vcap/instance/dns/records.json
+
+  local_source.scrape_interval:
+    description: How often to scrape the local file, in seconds
+    default: 30
+
+  remote_source.endpoint:
+    description: |
+      The URL to issue a GET request against to get the records.json
+      file contents. Formatting should include the scheme and port.
+    example: https://example.com:443/records
+
+  remote_source.insecure_skip_verify:
+    description: |
+      If true, skip validation of the certificates served by the remote
+      endpoint.
+    default: false
+
+  remote_source.ca_certs:
+    description: |
+      CA certs to trust as signers when validating the certificate served by the
+      remote endpoint.
+
+  remote_source.scrape_interval:
+    description: How often to scrape the remote endpoint, in seconds.
+    default: 30
+
+  remote_source.basic_auth.enabled:
+    description: |
+      If true, basic auth Authorization headers will be sent on requests to the
+      remote endpoint, populated with the configured username and password.
+    default: false
+      
+  remote_source.basic_auth.username:
+    description: The username to send to the remote endpoint for basic auth.
+
+  remote_source.basic_auth.password:
+    description: The password to send to the remote endpoint for basic auth.
+
+  remote_source.include.deployments:
+    description: |
+      Deployments to import the DNS entries for from the remote source. If left
+      empty, all deployments will be pulled. Each entry in the list is a regex
+      that should match the name of the deployment(s) you want.
+    default: []
+
+  destination.file:
+    description: The location to write the merged file to.
+    default: /var/vcap/data/merge-bosh-dns/records.json

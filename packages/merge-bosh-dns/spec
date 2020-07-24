@@ -1,0 +1,7 @@
+---
+name: merge-bosh-dns
+
+dependencies: []
+
+files:
+  - merge-bosh-dns/merge-bosh-dns

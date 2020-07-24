@@ -1,0 +1,5 @@
+name: merge-bosh-dns
+blobstore:
+  provider: s3
+  options:
+    bucket_name: merge-bosh-dns-boshrelease

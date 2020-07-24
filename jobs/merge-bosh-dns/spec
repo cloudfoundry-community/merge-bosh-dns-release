@@ -5,9 +5,12 @@ description: |
   merge-bosh-dns can read a remotely served records.json file and a local fs
   records.json file and merge them together into a new file.
 
-#TODO: templates
+templates:
+  bin/ctl: bin/ctl
+  config/merge-bosh-dns-config.yml.erb: config/merge-bosh-dns-config.yml
 
-#TODO: packages
+packages:
+  - merge-bosh-dns
 
 properties:
   local_source.file:

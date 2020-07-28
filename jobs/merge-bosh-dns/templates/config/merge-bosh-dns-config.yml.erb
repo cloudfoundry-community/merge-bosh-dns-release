@@ -4,7 +4,7 @@ remote_source:
   insecure_skip_verify: <%= p("remote_source.insecure_skip_verify") %>
   scrape_interval: <%= p("remote_source.scrape_interval") %>
   <% if_p("remote_source.ca_certs") do |ca_certs| %>
-  ca_certs: "<%= ca_certs.to_json %>"
+  ca_certs: <%= ca_certs.to_json %>
   <% end %>
   <% if p("remote_source.basic_auth.enabled") %>
   basic_auth:

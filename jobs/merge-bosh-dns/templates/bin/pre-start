@@ -1,0 +1,15 @@
+#!/bin/bash
+set -eu
+
+RUN_DIR=/var/vcap/sys/run/merge-bosh-dns
+LOG_DIR=/var/vcap/sys/log/merge-bosh-dns
+JOB_DIR=/var/vcap/jobs/merge-bosh-dns
+
+mkdir -p $LOG_DIR
+exec >>$LOG_DIR/pre-start.log 2>&1
+
+chmod g+s /var/vcap/data/merge-bosh-dns
+exec /var/vcap/packages/merge-bosh-dns/bin/merge-bosh-dns update \
+    --config $JOB_DIR/config/merge-bosh-dns-config.yml
+
+exit 0

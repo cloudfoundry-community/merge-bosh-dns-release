@@ -8,6 +8,7 @@ description: |
 templates:
   bin/ctl: bin/ctl
   config/merge-bosh-dns-config.yml.erb: config/merge-bosh-dns-config.yml
+  bin/pre-start: bin/pre-start
 
 packages:
   - merge-bosh-dns
